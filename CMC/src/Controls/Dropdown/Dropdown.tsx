@@ -14,7 +14,7 @@ import {
     IRowDatabind,
     IObjectDatabind,
     ControlTypes,
-} from '@cruds/cdh';
+} from '@harpreet547/cdh';
 import Button, { IButtonProps } from '../Button/Button';
 import ControlLabel from '../Label/ControlLabel';
 import DropdownListItem, { IDropdownListElement } from './DropdownListItem';

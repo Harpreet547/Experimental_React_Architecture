@@ -29,13 +29,13 @@
     "typescript": "^5.1.6"
   },
   "peerDependencies": {
-    "@cruds/cdh": "file:../CDH/cruds-cdh-0.1.0.tgz",
     "@fluentui/react-components": "^9.29.3",
     "@reduxjs/toolkit": "^1.9.5",
     "react": "^18.2.0",
     "react-redux": "^8.1.1"
   },
   "dependencies": {
-    "@fluentui/react-datepicker-compat": "^0.3.9"
+    "@fluentui/react-datepicker-compat": "^0.3.9",
+    "@harpreet547/cdh": "file:../CDH/harpreet547-cdh-0.1.0.tgz"
   }
 }

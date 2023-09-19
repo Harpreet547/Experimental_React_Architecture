@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button as NativeElementButton, ButtonProps as NativeElementButtonProps } from '@rneui/themed';
-import { ControlTypes } from '@cruds/cdh';
+import { ControlTypes } from '@harpreet547/cdh';
 
 export interface IButtonProps extends NativeElementButtonProps, ControlTypes.ILocalizedLabel {
 

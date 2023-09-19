@@ -1,5 +1,5 @@
 import React, { useId } from "react";
-import { CollectionService, ControlTypes, ICollectionRow, IRowDataSource, RootState, useDataSource } from "@cruds/cdh";
+import { CollectionService, ControlTypes, ICollectionRow, IRowDataSource, RootState, useDataSource } from "@harpreet547/cdh";
 import { makeStyles, shorthands } from "@fluentui/react-components";
 import { getLabelClassName } from "../HelperFunctions";
 import ControlLabel from "../ControlLabel/ControlLabel";

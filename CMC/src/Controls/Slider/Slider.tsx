@@ -1,6 +1,6 @@
 import React from "react";
 import { Slider as RNEUISlider, SliderProps as RNEUISliderProps, makeStyles } from '@rneui/themed';
-import { IObjectDatabind, IRowDatabind, useDatabind } from "@cruds/cdh";
+import { IObjectDatabind, IRowDatabind, useDatabind } from "@harpreet547/cdh";
 
 interface ISliderProps extends RNEUISliderProps {
     databind?: IRowDatabind | IObjectDatabind;

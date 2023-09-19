@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { TextInput, View } from 'react-native';
-import { ControlTypes, useDatabind, IRowDatabind, IObjectDatabind } from '@cruds/cdh';
+import { ControlTypes, useDatabind, IRowDatabind, IObjectDatabind } from '@harpreet547/cdh';
 import { Input, InputProps } from '@rneui/base';
 import ControlLabel from '../Label/ControlLabel';
 import { makeStyles } from '@rneui/themed';

@@ -1,4 +1,4 @@
-import { CollectionService, DynamicControlType, IOption, RootState, useCollection } from "@cruds/cdh";
+import { CollectionService, DynamicControlType, IOption, RootState, useCollection } from "@harpreet547/cdh";
 import { useEffect, useId, useMemo } from "react";
 import getRadioGroupFromOption from "./getRadioGroupFromOption";
 import { useStore } from "react-redux";
@@ -24,14 +24,14 @@ const useControlFromOption = (option: IOption | undefined, collectionID: string,
     );
 
     useEffect(() => {
-        if(CollectionService.doesExist(finalDataSourceID, store.getState()))
+        if (CollectionService.doesExist(finalDataSourceID, store.getState()))
             CollectionService.setRows(finalDataSourceID, values ?? [], store);
     }, [finalDataSourceID, store, values]);
 
     const Control = useMemo(() => {
-        if(!datasource) return null;
+        if (!datasource) return null;
 
-        switch(typeId) {
+        switch (typeId) {
             case DynamicControlType.RADIOGROUP:
                 return getRadioGroupFromOption(finalDataSourceID, datasource, title, collectionID, index, optionIndex);
             default:

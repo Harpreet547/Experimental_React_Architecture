@@ -1,6 +1,6 @@
 import React from "react";
 import { Text as FluentText, TextProps as FluentTextProps } from '@fluentui/react-components';
-import { ControlTypes } from "@cruds/cdh";
+import { ControlTypes } from "@harpreet547/cdh";
 
 type TextProps = FluentTextProps & ControlTypes.ILocalizedLabel;
 

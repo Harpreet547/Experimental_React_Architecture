@@ -1,5 +1,5 @@
 import React, { useCallback, useId } from "react";
-import { ControlTypes, IObjectDatabind, IRowDatabind, useDatabind } from "@cruds/cdh";
+import { ControlTypes, IObjectDatabind, IRowDatabind, useDatabind } from "@harpreet547/cdh";
 import '../Controls.scss';
 import {
     Input as FUIInput,

@@ -2,7 +2,7 @@ import React, { useCallback, useId } from "react";
 import { DatePicker as FluentDatePicker } from "@fluentui/react-datepicker-compat";
 import type { DatePickerProps } from "@fluentui/react-datepicker-compat";
 import { getLabelClassName } from "../HelperFunctions";
-import { ControlTypes, IDateOnly, IObjectDatabind, IRowDatabind, useDatabind, DateOnly, DateTime } from "@cruds/cdh";
+import { ControlTypes, IDateOnly, IObjectDatabind, IRowDatabind, useDatabind, DateOnly, DateTime } from "@harpreet547/cdh";
 import ControlLabel from "../ControlLabel/ControlLabel";
 
 interface IDatePickerProps extends Omit<DatePickerProps, 'value'>, ControlTypes.ILocalizedLabel {

@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { ControlTypes, IRowDatabind, IObjectDatabind, useDatabind } from "@cruds/cdh";
+import { ControlTypes, IRowDatabind, IObjectDatabind, useDatabind } from "@harpreet547/cdh";
 import { GestureResponderEvent, TextStyle, ViewStyle } from 'react-native';
 import { CheckBox as NativeElementCheckbox, CheckBoxProps as NativeElementCheckboxProps } from '@rneui/base';
 import { makeStyles, useTheme } from "@rneui/themed";
@@ -11,7 +11,7 @@ export interface ICheckboxProps extends Omit<NativeElementCheckboxProps, 'title'
     onPress?: (event: GestureResponderEvent, checked?: boolean, controlID?: string | number) => void;
 }
 const CheckBox: React.FC<ICheckboxProps> = (props: ICheckboxProps): React.ReactElement => {
-    const {label, labelLocalizedID, databind, onPress, checked, controlID, ...checkboxProps} = props;
+    const { label, labelLocalizedID, databind, onPress, checked, controlID, ...checkboxProps } = props;
 
     const styles = useStyles();
     const { theme } = useTheme();

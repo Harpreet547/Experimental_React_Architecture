@@ -1,5 +1,5 @@
 import React from 'react';
-import { ControlTypes } from '@cruds/cdh';
+import { ControlTypes } from '@harpreet547/cdh';
 import {
     Button as FUIButton,
     ButtonProps as FUIButtonProps,

@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "ES2019", //
+    "lib": ["esnext", "DOM", "DOM.Iterable"], // library does not need dom
+    "skipLibCheck": true, //
+    "strict": true, //
+    "alwaysStrict": true, //
+    "noImplicitThis": true, //
+    "noFallthroughCasesInSwitch": true, //
+    "esModuleInterop": true, //
+    "module": "ESNext", //
+    "moduleResolution": "node", //
+    "jsx": "preserve", //
+    "sourceMap": true, //
+    "declaration": true, //
+    "declarationMap": true, //
+    "strictNullChecks": true, //
+    "noImplicitAny": true, //
+    "baseUrl": "./", //
+  },
+}

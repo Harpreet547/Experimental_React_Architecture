@@ -1,0 +1,18 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+    },
+    "eslint.validate": [
+        "typescript"
+    ],
+    "editor.tabSize": 4,
+    "eslint.workingDirectories": [
+        "./CDH",
+        "./opa-admin",
+        "./OPAMOBILE",
+        "./opa-web",
+        "./CWC",
+        "./opa-common"
+    ]
+}

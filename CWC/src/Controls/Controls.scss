@@ -1,0 +1,15 @@
+.cruds-controls-root {
+    display: flex;
+    gap: 8px;
+
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+    &-label-left {
+        flex-direction: row;
+    }
+
+    &-label-top {
+        flex-direction: column;
+    }
+}

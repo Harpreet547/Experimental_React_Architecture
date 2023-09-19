@@ -1,0 +1,115 @@
+
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended",
+      "plugin:no-unsanitized/DOM",
+      "plugin:react/recommended",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "plugin:react-hooks/recommended"
+      // "plugin:jest/recommended",
+      // "plugin:testing-library/react"
+    ],
+    "plugins": [
+      "deprecation",
+      "@typescript-eslint",
+      "react-refresh"
+    ],
+    "rules": {
+      "react-refresh/only-export-components": [
+        "warn",
+        { "allowConstantExport": true }
+      ],
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "jsx-a11y/anchor-is-valid": "warn",
+      "no-console": "warn",
+      "react/button-has-type": "error",
+      "no-var": "warn",
+      "prefer-const": "warn",
+      "no-warning-comments": [
+        "warn",
+        {
+          "location": "anywhere"
+        }
+      ],
+      "max-lines": [
+        "warn",
+        {
+          "max": 200,
+          "skipBlankLines": true,
+          "skipComments": true
+        }
+      ],
+      "max-len": [
+        "warn",
+        {
+          "code": 160
+        }
+      ],
+      "testing-library/render-result-naming-convention": "off",
+      "no-restricted-imports": [
+        "warn",
+        {
+          "paths": []
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "parserOptions": {
+          "project": "tsconfig.json"
+        },
+        "files": [
+          "**/*.ts?(x)"
+        ],
+        "rules": {
+          "@typescript-eslint/semi": "warn",
+          "@typescript-eslint/indent": [
+            "warn",
+            4
+          ],
+          "@typescript-eslint/no-floating-promises": "error",
+          "@typescript-eslint/interface-name-prefix": "off",
+          "@typescript-eslint/explicit-function-return-type": "off",
+          "@typescript-eslint/explicit-module-boundary-types": "off",
+          "@typescript-eslint/no-empty-interface": "warn",
+          "@typescript-eslint/type-annotation-spacing": "warn",
+          "@typescript-eslint/no-inferrable-types": "warn",
+          "@typescript-eslint/member-delimiter-style": "warn",
+          "@typescript-eslint/no-unused-vars": "warn",
+          "deprecation/deprecation": "warn"
+        }
+      }
+    ],
+    "settings": {
+      "react": {
+        "createClass": "createReactClass", // Regex for Component Factory to use,
+                                           // default to "createReactClass"
+        "pragma": "React",  // Pragma to use, default to "React"
+        "fragment": "Fragment",  // Fragment to use (may be a property of <pragma>), default to "Fragment"
+        "version": "detect", // React version. "detect" automatically picks the version you have installed.
+                             // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+                             // It will default to "latest" and warn if missing, and to "detect" in the future
+        "flowVersion": "0.53" // Flow version
+      },
+      "propWrapperFunctions": [
+          // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+          "forbidExtraProps",
+          {"property": "freeze", "object": "Object"},
+          {"property": "myFavoriteWrapper"},
+          // for rules that check exact prop wrappers
+          {"property": "forbidExtraProps", "exact": true}
+      ],
+      "componentWrapperFunctions": [
+          // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
+          "observer", // `property`
+          {"property": "styled"}, // `object` is optional
+          {"property": "observer", "object": "Mobx"},
+          {"property": "observer", "object": "<pragma>"} // sets `object` to whatever value `settings.react.pragma` is set to
+      ]
+    }
+  }

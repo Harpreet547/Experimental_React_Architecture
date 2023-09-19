@@ -1,0 +1,41 @@
+{
+  "name": "@harpreet547/cwc",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no tests installed\" && exit 1",
+    "copy-sass": "copyfiles --up 1 \"src/**/*.scss\" \"src/**/*.GIF\" \"src/**/*.svg\" dist",
+    "build": "tsc --project tsconfig.json && npm run copy-sass",
+    "lint": "eslint src/**/*.ts"
+  },
+  "author": "harpreet547",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "copyfiles": "^2.4.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-deprecation": "^1.4.1",
+    "eslint-plugin-jsx-a11y": "^6.7.1",
+    "eslint-plugin-no-unsanitized": "^4.0.2",
+    "eslint-plugin-react": "^7.33.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-config-standard": "^9.0.0",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "@cruds/cdh": "file:../CDH/cruds-cdh-0.1.0.tgz",
+    "@fluentui/react-components": "^9.29.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "react": "^18.2.0",
+    "react-redux": "^8.1.1"
+  },
+  "dependencies": {
+    "@fluentui/react-datepicker-compat": "^0.3.9"
+  }
+}

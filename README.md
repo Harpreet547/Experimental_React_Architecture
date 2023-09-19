@@ -2,7 +2,7 @@
 
 This repo contains three projects that can be imported as npm packages.
 
-## 1. CDH - Common Data Handler
+## CDH - Common Data Handler
 
 ### Main functionality
 * Redux Store creation using redux toolkit.
@@ -49,9 +49,9 @@ This repo contains three projects that can be imported as npm packages.
 #### Both React-native apps and React.js web apps can use these features.
 
 
-# CWC and CMC
-## CWC - Common web components
-## CMC - Common mobile components (React native)
+## CWC and CMC
+### CWC - Common web components
+### CMC - Common mobile components (React native)
 
 Both **CWC** and **CMC** use **CDH** under the hood to implement controls for web and mobile respectively.
 All controls have integration with Collection and Object slices using hooks or services to implement **Datasource** and **Databind**.

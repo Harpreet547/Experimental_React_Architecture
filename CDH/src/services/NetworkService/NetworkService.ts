@@ -2,14 +2,7 @@ import DateTimeFormatter from "../DateService/DateTimeFormatter";
 import { IRequestData } from "./NetworkServiceTypes";
 import axios from 'axios';
 
-const qaURL = 'https://cruds-p3s-qa.azurewebsites.net/api';
-const qaKey = 'code=TIuEqnhxirXoIQ3rITXqJ4iKsf-RrLyCfqwbhwij8a_AAzFufYkhsQ==';
-
-const apiURL = 'https://cruds-p3s-dev.azurewebsites.net/api';
-const apiKey = 'code=CGrlX4qhwqrDKR2_2MW1f4wh2jZDssC_sPJRZIkvD0ldAzFuqvlVmw==';
-
-const URL = qaURL;
-const key = qaKey;
+const URL = "";
 
 const reviver = (key: string, value: unknown) => {
 
@@ -21,13 +14,13 @@ const reviver = (key: string, value: unknown) => {
 };
 
 const get = async <T>(settings: IRequestData) => {
-    const res = await axios.get<T>(URL + '/' + settings.method + '?' + key);
+    const res = await axios.get<T>(URL + '/' + settings.method);
 
     return res.data;
 };
 
 const post = async <T>(settings: IRequestData) => {
-    const res = await axios.post<T>(URL + '/' + settings.method + '?' + key, settings.data, {
+    const res = await axios.post<T>(URL + '/' + settings.method, settings.data, {
         transformResponse: (res) => {
             return res && typeof res === 'string' ? JSON.parse(res, reviver) as T : undefined;
         },

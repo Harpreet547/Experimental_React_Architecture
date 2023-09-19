@@ -1,4 +1,4 @@
-import { IObjectDatabind, IRowDatabind } from '@cruds/cdh';
+import { IObjectDatabind, IRowDatabind } from '@harpreet547/cdh';
 import React from 'react';
 import { IOptionSettings } from './Types';
 import MultiSelectTextBox from '../../StyledControls/TextBox/MultiSelectTextBox';

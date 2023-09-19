@@ -1,6 +1,6 @@
 import React from 'react';
 import YesNoSwitch from '../../StyledControls/Switch/YesNoSwitch';
-import { DynamicControlTypeDataSource, IObjectDatabind, IRowDatabind } from '@cruds/cdh';
+import { DynamicControlTypeDataSource, IObjectDatabind, IRowDatabind } from '@harpreet547/cdh';
 import { IOptionSettings } from './Types';
 
 // const getSwitchForOption = (

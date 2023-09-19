@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import RadioGroup, { IRadioGroupProps } from '../../Controls/RadioGroup/RadioGroup';
 import { makeStyles, useTheme } from '@rneui/themed';
 import { GestureResponderEvent } from 'react-native';
-import { IKeyValueDataSource, IKeyValueElement, useDataSource, useDatabind } from '@cruds/cdh';
+import { IKeyValueDataSource, IKeyValueElement, useDataSource, useDatabind } from '@harpreet547/cdh';
 import { APPEARANCE } from '../Types';
 
 enum YESNO {

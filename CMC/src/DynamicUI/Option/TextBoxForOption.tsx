@@ -1,6 +1,6 @@
 import React from 'react';
 import CardTextBox from '../../StyledControls/TextBox/CardTextBox';
-import { IObjectDatabind, IRowDatabind } from '@cruds/cdh';
+import { IObjectDatabind, IRowDatabind } from '@harpreet547/cdh';
 import { IOptionSettings } from './Types';
 
 // const getTextBoxForOption = (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import ControlLabel from '../Label/ControlLabel';
-import { ControlTypes, IObjectDatabind, IRowDatabind, useDatabind } from '@cruds/cdh';
+import { ControlTypes, IObjectDatabind, IRowDatabind, useDatabind } from '@harpreet547/cdh';
 import Text from '../Text/Text';
 
 interface ITextFieldProps extends ControlTypes.ILocalizedLabel {

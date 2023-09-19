@@ -1,5 +1,5 @@
 import React from 'react';
-import { DynamicControlTypeDataSource, IObjectDatabind, IRowDatabind } from '@cruds/cdh';
+import { DynamicControlTypeDataSource, IObjectDatabind, IRowDatabind } from '@harpreet547/cdh';
 import CardCheckboxGroup from '../../StyledControls/Checkbox/CardCheckboxGroup';
 
 // const getCheckBoxGroupForOption = (

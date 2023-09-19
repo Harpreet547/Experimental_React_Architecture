@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { FlatList as RNFlatList, FlatListProps as RNFlatListProps } from 'react-native';
-import { IRowDataSource, useDataSource, ICollectionRow, CollectionService, RootState } from '@cruds/cdh';
+import { IRowDataSource, useDataSource, ICollectionRow, CollectionService, RootState } from '@harpreet547/cdh';
 import { useSelector, useStore } from 'react-redux';
 
 export interface IFlatListProps<T = Record<string, unknown>> extends Omit<RNFlatListProps<T>, 'data'> {

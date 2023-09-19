@@ -4,11 +4,11 @@ import {
     Divider,
     ListItemProps,
 } from '@rneui/base';
-import { IKeyValueElement } from '@cruds/cdh';
+import { IKeyValueElement } from '@harpreet547/cdh';
 import { PressableStateCallbackType, StyleProp, TextStyle, ViewStyle } from 'react-native';
 import { makeStyles } from '@rneui/themed';
 
-export interface IDropdownListElement extends IKeyValueElement, ListItemProps {}
+export interface IDropdownListElement extends IKeyValueElement, ListItemProps { }
 
 interface IDropddownListItemProps extends Omit<IDropdownListElement, 'onPress'> {
     controlID: string | number | null;

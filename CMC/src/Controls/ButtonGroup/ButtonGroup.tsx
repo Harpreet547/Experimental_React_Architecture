@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { ButtonGroup as RNEUIButtonGroup, ButtonGroupProps as RNEUIButtonGroupProps } from '@rneui/themed';
-import { IKeyValueDataSource, IKeyValueElement, IObjectDatabind, IRowDatabind, useDataSource, useDatabind } from "@cruds/cdh";
+import { IKeyValueDataSource, IKeyValueElement, IObjectDatabind, IRowDatabind, useDataSource, useDatabind } from "@harpreet547/cdh";
 
 export interface IButtonGroupProps extends Omit<RNEUIButtonGroupProps, 'buttons' | 'button' | 'onPress'> {
     datasource?: IKeyValueDataSource;
@@ -26,7 +26,7 @@ const ButtonGroup: React.FC<IButtonGroupProps> = (props: IButtonGroupProps): Rea
 
     const onClick = (value: number | number[]) => {
 
-        if(Array.isArray(value)){
+        if (Array.isArray(value)) {
             const selectedKeys = finalDatasourceRows
                 ?.filter((row, index) => value.includes(index))
                 ?.map(row => row.key);
@@ -45,7 +45,7 @@ const ButtonGroup: React.FC<IButtonGroupProps> = (props: IButtonGroupProps): Rea
     const getSelectedIndexes = useCallback(() => {
         const indexes: number[] = [];
         finalDatasourceRows?.forEach((row, index) => {
-            if((finalBoundValue as number[]).includes(row.key as number))
+            if ((finalBoundValue as number[]).includes(row.key as number))
                 indexes.push(index);
         });
         return indexes;
@@ -55,7 +55,7 @@ const ButtonGroup: React.FC<IButtonGroupProps> = (props: IButtonGroupProps): Rea
         let selected: number | undefined;
 
         finalDatasourceRows?.every((row, index) => {
-            if((finalBoundValue as number) === row.key) {
+            if ((finalBoundValue as number) === row.key) {
                 selected = index;
                 return false;
             } else {

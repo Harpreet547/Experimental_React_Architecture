@@ -1,6 +1,6 @@
 import React from "react";
 import { Spinner as FluentSpinner, SpinnerProps } from '@fluentui/react-components';
-import { ControlTypes } from "@cruds/cdh";
+import { ControlTypes } from "@harpreet547/cdh";
 
 interface ISpinner extends Omit<SpinnerProps, 'label'>, ControlTypes.ILocalizedLabel {
 

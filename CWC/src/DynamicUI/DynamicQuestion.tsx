@@ -1,5 +1,5 @@
 import React from 'react';
-import { CollectionService, IQuestion, RootState } from '@cruds/cdh';
+import { CollectionService, IQuestion, RootState } from '@harpreet547/cdh';
 import { useSelector } from 'react-redux';
 import useControlFromOption from './Hooks/useControlFromOption';
 

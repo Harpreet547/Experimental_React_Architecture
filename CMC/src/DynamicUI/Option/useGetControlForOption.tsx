@@ -9,7 +9,7 @@ import {
     RootState,
     isDeepEqual,
     useCollection
-} from "@cruds/cdh";
+} from "@harpreet547/cdh";
 import { useId, useMemo } from "react";
 import { IOptionSettings } from "./Types";
 import RadioGroupForOption from "./RadioGroupForOption";

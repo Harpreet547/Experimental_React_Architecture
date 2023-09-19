@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { GestureResponderEvent, View } from 'react-native';
-import { ControlTypes, IRowDatabind, IObjectDatabind, useDatabind, IKeyValueDataSource, useDataSource, IKeyValueElement } from '@cruds/cdh';
+import { ControlTypes, IRowDatabind, IObjectDatabind, useDatabind, IKeyValueDataSource, useDataSource, IKeyValueElement } from '@harpreet547/cdh';
 import ControlLabel from '../Label/ControlLabel';
 import CheckBox, { ICheckboxProps } from './CheckBox';
 import { makeStyles } from '@rneui/themed';

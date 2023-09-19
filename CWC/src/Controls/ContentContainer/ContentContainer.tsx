@@ -1,5 +1,5 @@
 import React from "react";
-import { ControlTypes } from "@cruds/cdh";
+import { ControlTypes } from "@harpreet547/cdh";
 import Text from "../Text/Text";
 import { Subtitle1, Title1, makeStyles, shorthands } from "@fluentui/react-components";
 import { tokens } from "../../Theme/Theme";

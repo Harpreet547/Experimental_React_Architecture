@@ -1,4 +1,4 @@
-import { ControlTypes } from '@cruds/cdh';
+import { ControlTypes } from '@harpreet547/cdh';
 import { makeStyles } from '@rneui/themed';
 import React from 'react';
 import { Text as ReactElementText, TextProps as ReactElementTextProps } from '@rneui/base';

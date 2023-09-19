@@ -1,5 +1,5 @@
 import React, { useCallback, useId } from 'react';
-import { ControlTypes, IKeyValueDataSource, IObjectDatabind, IRowDatabind, useDataSource, useDatabind } from '@cruds/cdh';
+import { ControlTypes, IKeyValueDataSource, IObjectDatabind, IRowDatabind, useDataSource, useDatabind } from '@harpreet547/cdh';
 import ControlLabel from '../ControlLabel/ControlLabel';
 import { getLabelClassName } from '../HelperFunctions';
 import {

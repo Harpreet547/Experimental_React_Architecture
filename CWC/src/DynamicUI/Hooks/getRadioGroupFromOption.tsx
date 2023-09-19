@@ -1,5 +1,5 @@
 import React from 'react';
-import { DynamicControlTypeDataSource } from '@cruds/cdh';
+import { DynamicControlTypeDataSource } from '@harpreet547/cdh';
 import RadioGroup from '../../Controls/RadioGroup/RadioGroup';
 
 const getRadioGroupFromOption = (

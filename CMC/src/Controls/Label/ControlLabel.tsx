@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, TextProps } from '@rneui/base';
-import { ControlTypes } from '@cruds/cdh';
+import { ControlTypes } from '@harpreet547/cdh';
 import { makeStyles } from '@rneui/themed';
 import { TextStyle } from 'react-native';
 
@@ -20,7 +20,7 @@ const ControlLabel: React.FC<IControlLabelProps> = (props: IControlLabelProps): 
                 ...(props.style as TextStyle),
             }}
         >
-            { label }
+            {label}
         </Text>
     );
 };

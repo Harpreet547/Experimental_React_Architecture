@@ -1,5 +1,5 @@
 import React, { useCallback, useId } from 'react';
-import { ControlTypes, IKeyValueDataSource, IKeyValueElement, IObjectDatabind, useDataSource, IRowDatabind, useDatabind } from '@cruds/cdh';
+import { ControlTypes, IKeyValueDataSource, IKeyValueElement, IObjectDatabind, useDataSource, IRowDatabind, useDatabind } from '@harpreet547/cdh';
 import {
     DropdownProps as FUIDropdownProps,
     Dropdown as FUIDropdown,

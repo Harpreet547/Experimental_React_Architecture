@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { NativeSyntheticEvent, TextInput, TextInputSubmitEditingEventData, TouchableOpacity, View } from "react-native";
 import TextBox, { ITextBoxProps } from "../../Controls/TextBox/TextBox";
 import Text from "../../Controls/Text/Text";
-import { useDatabind } from "@cruds/cdh";
+import { useDatabind } from "@harpreet547/cdh";
 import { Input } from "@rneui/base";
 import { Icon, makeStyles, useTheme } from "@rneui/themed";
 import { APPEARANCE } from "../Types";

@@ -46,6 +46,9 @@ jobs:
       working-directory: CDH
       run: npm ci
 
-    - name: node run eslint
+    - id: warnings
+      name: node run eslint
       working-directory: CDH
-      run: npm run lint:summary
+      run: |
+        finalVal=$(npm run lint:summary)
+        echo "Warning count = $finalVal"

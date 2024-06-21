@@ -54,11 +54,11 @@ jobs:
       working-directory: CDH
       run:  npm run lint:report
 
-      continue-on-error: true
+    #   continue-on-error: true
     
-    - name: Annotate Code
-      uses: DerLev/eslint-annotations@v2
-      with:
-        eslint-report: CDH/reports/eslint_report.json
-        # typescript-log: typescript.log
+    # - name: Annotate Code
+    #   uses: DerLev/eslint-annotations@v2
+    #   with:
+    #     eslint-report: CDH/reports/eslint_report.json
+    #     # typescript-log: typescript.log
 

@@ -50,11 +50,16 @@ jobs:
       run: npm ci
 
     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
-    - name: npm run lint
+    - name: npm run lint:report
       working-directory: CDH
       run:  npm run lint:report
 
     #   continue-on-error: true
+
+    # to see if count is printed
+    - name: npm run lint:count
+      working-directory: CDH
+      run:  npm run lint:count
     
     - name: Annotate Code
       uses: DerLev/eslint-annotations@v2

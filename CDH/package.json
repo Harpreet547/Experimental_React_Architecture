@@ -7,7 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no tests installed\" && exit 1",
     "build": "tsc --project tsconfig.json",
-    "lint": "eslint src/**/*.ts"
+    "lint": "eslint src/**/*.ts",
+    "lint:report": "eslint src/**/*.ts --format json --output-file reports/eslint_report.json"
   },
   "author": "harpreet547",
   "license": "ISC",

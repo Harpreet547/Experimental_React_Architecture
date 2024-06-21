@@ -56,5 +56,5 @@ jobs:
       working-directory: CDH
       env:
         ESLINT_PLUGIN_DIFF_COMMIT: ${{ github.event.pull_request.base.ref }}
-      run: npx --no-install eslint --ext .js,.jsx,.ts,.tsx . --max-warnings=0
+      run: npx --no-install eslint src/ --max-warnings=0
 

@@ -4,10 +4,10 @@
 name: Node.js CI
 
 on:
-  push:
+  # push:
+    # branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
 
 defaults:
   run:
@@ -37,16 +37,14 @@ jobs:
         cache: 'npm'
         cache-dependency-path: 'CDH/package-lock.json'
   
-    - name: npm ci
+    - name: Lint
       working-directory: CDH
-      run: npm ci
+      run: Lint
 
     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
     - name: npm run lint
       working-directory: CDH
-      run: |
-        npm install
-        npm run lint > typescript.log
+      run:  npm run lint > typescript.log
 
       continue-on-error: true
     

@@ -1,0 +1,51 @@
+name: Lint warnings in new changes
+
+on:
+  # push:
+    # branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+defaults:
+  run:
+    shell: bash
+    # working-directory: CDH
+
+jobs:
+  
+  build:
+
+    runs-on: ubuntu-latest
+    # this is for the GITHUB_TOKEN's permissions so the action always has
+    # access to the checks and pull request claim
+    # this is not needed in this example because we don't use status checks here
+    permissions:
+      checks: write
+      pull-requests: read
+      
+    outputs:
+      paths: ${{ steps.list-files.outputs.paths }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        # working-directory: CDH
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: 'CDH/package-lock.json'
+  
+    - name: npm ci
+      working-directory: CDH
+      run: npm ci
+
+    - name: node run eslint
+      working-directory: CDH
+      run: npm run lint:summary

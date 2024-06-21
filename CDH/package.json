@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no tests installed\" && exit 1",
     "build": "tsc --project tsconfig.json",
-    "lint": "eslint src/**/*.ts",
+    "lint": "eslint src/**/*.ts --max-warnings=-1",
     "lint:report": "eslint src/**/*.ts --format json --output-file reports/eslint_report.json",
     "lint:count": "npm run lint 2>&1 | grep -Ei 'error|warning' | wc -l"
   },

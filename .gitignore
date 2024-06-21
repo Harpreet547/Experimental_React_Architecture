@@ -11,6 +11,7 @@ node_modules
 dist
 tsconfig.tsbuildinfo
 dist-ssr
+reports
 .vite
 *.local
 

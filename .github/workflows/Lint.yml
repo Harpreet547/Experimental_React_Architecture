@@ -46,7 +46,7 @@ jobs:
         cache-dependency-path: 'CDH/package-lock.json'
   
     - name: npm ci
-      working-directory: CDH
+      working-directory: CWC # hardcoded CWC for now
       run: npm ci
 
     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH

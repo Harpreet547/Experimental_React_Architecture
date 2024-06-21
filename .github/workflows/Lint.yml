@@ -1,85 +1,76 @@
-# # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-# name: Lint
+name: Lint
 
-# on:
-#   # push:
-#     # branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-
-# defaults:
-#   run:
-#     shell: bash
-#     # working-directory: CDH
-
-# jobs:
-  
-#   build:
-
-#     runs-on: ubuntu-latest
-#     # this is for the GITHUB_TOKEN's permissions so the action always has
-#     # access to the checks and pull request claim
-#     # this is not needed in this example because we don't use status checks here
-#     permissions:
-#       checks: write
-#       pull-requests: read
-      
-#     outputs:
-#       paths: ${{ steps.list-files.outputs.paths }}
-
-#     strategy:
-#       matrix:
-#         node-version: [18.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-#     steps:
-#     - uses: actions/checkout@v4
-
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v4
-#       with:
-#         # working-directory: CDH
-#         node-version: ${{ matrix.node-version }}
-#         cache: 'npm'
-#         cache-dependency-path: 'CDH/package-lock.json'
-  
-#     - name: npm ci
-#       working-directory: CDH
-#       run: npm ci
-
-#     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
-#     - name: npm run lint:report
-#       working-directory: CDH
-#       run:  npm run lint:report
-
-#     #   continue-on-error: true
-
-#     # to see if count is printed
-#     - name: npm run lint:count
-#       working-directory: CDH
-#       run:  npm run lint:count
-    
-#     - name: Annotate Code
-#       uses: DerLev/eslint-annotations@v2
-#       with:
-#         eslint-report: CDH/reports/eslint_report.json
-#         # typescript-log: typescript.log
-
-name: Run ESLint on your changes only
 on:
+  # push:
+    # branches: [ "main" ]
   pull_request:
+    branches: [ "main" ]
+
+defaults:
+  run:
+    shell: bash
+    # working-directory: CDH
+
 jobs:
+  
   build:
+
     runs-on: ubuntu-latest
+    # this is for the GITHUB_TOKEN's permissions so the action always has
+    # access to the checks and pull request claim
+    # this is not needed in this example because we don't use status checks here
+    permissions:
+      checks: write
+      pull-requests: read
+      
+    outputs:
+      paths: ${{ steps.list-files.outputs.paths }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Install modules
-        run: npm install
-      - name: Fetch the base branch, so we can use `git diff`
-        run: git fetch origin ${{ github.event.pull_request.base.ref }}:${{ github.event.pull_request.base.ref }}
-      - name: Run ESLint on your changes only
-        env:
-          ESLINT_PLUGIN_DIFF_COMMIT: ${{ github.event.pull_request.base.ref }}
-        run: npx --no-install eslint --ext .js,.jsx,.ts,.tsx .
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        # working-directory: CDH
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: 'CDH/package-lock.json'
+  
+    - name: npm ci
+      working-directory: CDH
+      run: npm ci
+
+    # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
+    - name: npm run lint:report
+      working-directory: CDH
+      run:  npm run lint:report
+
+    #   continue-on-error: true
+
+    # to see if count is printed
+    - name: npm run lint:count
+      working-directory: CDH
+      run:  npm run lint:count
+    
+    - name: Annotate Code
+      uses: DerLev/eslint-annotations@v2
+      with:
+        eslint-report: CDH/reports/eslint_report.json
+        # typescript-log: typescript.log
+
+    - name: Fetch the base branch, so we can use `git diff`
+      run: git fetch origin ${{ github.event.pull_request.base.ref }}:${{ github.event.pull_request.base.ref }}
+    - name: Run ESLint on your changes only
+      env:
+        ESLINT_PLUGIN_DIFF_COMMIT: ${{ github.event.pull_request.base.ref }}
+      run: npx --no-install eslint --ext .js,.jsx,.ts,.tsx .
+

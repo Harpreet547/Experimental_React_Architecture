@@ -9,6 +9,8 @@ module.exports = function (results, context) {
         { errors: 0, warnings: 0 }
     );
 
+    console.log(summary);
+    
     if (summary.errors > 0 || summary.warnings > 0) {
         return (
             "Errors: " +

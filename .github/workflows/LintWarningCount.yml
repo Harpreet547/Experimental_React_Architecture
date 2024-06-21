@@ -1,4 +1,4 @@
-name: Lint warnings in new changes
+name: Reduce warning count in new changes
 
 on:
   # push:

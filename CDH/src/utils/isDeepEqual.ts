@@ -11,8 +11,6 @@ export const isDeepEqual = (object1: unknown, object2: unknown) => {
         !isObject(object2)
     ) return false;
 
-    // TODO: for testing lint pipeline
-
     const objKeys1 = Object.keys(object1 as Record<string, unknown> | unknown[]);
     const objKeys2 = Object.keys(object2 as Record<string, unknown> | unknown[]);
 

@@ -39,7 +39,7 @@ jobs:
   
     - name: Lint
       working-directory: CDH
-      run: Lint
+      run: npm ci
 
     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
     - name: npm run lint

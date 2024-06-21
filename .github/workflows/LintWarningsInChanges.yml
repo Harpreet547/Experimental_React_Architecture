@@ -1,13 +1,13 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: Node.js CI
+name: Lint warnings in new changes
 
 on:
-  push:
+  # push:
+    # branches: [ "main" ]
+  pull_request:
     branches: [ "main" ]
-  # pull_request:
-  #   branches: [ "main" ]
 
 defaults:
   run:
@@ -15,9 +15,17 @@ defaults:
     # working-directory: CDH
 
 jobs:
+  
   build:
 
     runs-on: ubuntu-latest
+    # this is for the GITHUB_TOKEN's permissions so the action always has
+    # access to the checks and pull request claim
+    # this is not needed in this example because we don't use status checks here
+    permissions:
+      checks: write
+      pull-requests: read
+      
     outputs:
       paths: ${{ steps.list-files.outputs.paths }}
 
@@ -27,10 +35,10 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         # working-directory: CDH
         node-version: ${{ matrix.node-version }}
@@ -41,18 +49,12 @@ jobs:
       working-directory: CDH
       run: npm ci
 
-    # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
-    - name: npm run lint
+    - name: Fetch the base branch, so we can use `git diff`
       working-directory: CDH
-      run: |
-        npm install
-        npm run lint > typescript.log
-
-      continue-on-error: true
-    
-    - name: Annotate Code
-      uses: DerLev/eslint-annotations@v2
-      with:
-        eslint-report: eslint_report.json
-        typescript-log: typescript.log
+      run: git fetch origin ${{ github.event.pull_request.base.ref }}:${{ github.event.pull_request.base.ref }}
+    - name: Run ESLint on your changes only
+      working-directory: CDH
+      env:
+        ESLINT_PLUGIN_DIFF_COMMIT: ${{ github.event.pull_request.base.ref }}
+      run: npx --no-install eslint --ext .js,.jsx,.ts,.tsx . --max-warnings=0
 

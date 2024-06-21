@@ -9,7 +9,8 @@
     "test": "echo \"Error: no tests installed\" && exit 1",
     "copy-sass": "copyfiles --up 1 \"src/**/*.scss\" \"src/**/*.GIF\" \"src/**/*.svg\" dist",
     "build": "tsc --project tsconfig.json && npm run copy-sass",
-    "lint": "eslint src/**/*.ts src/**/*.tsx"
+    "lint": "eslint src/**/*.ts src/**/*.tsx",
+    "lint:report": "eslint src/**/*.ts src/**/*.tsx --format json --output-file reports/eslint_report.json"
   },
   "author": "harpreet547",
   "license": "ISC",

@@ -15,9 +15,17 @@ defaults:
     # working-directory: CDH
 
 jobs:
+  
   build:
 
     runs-on: ubuntu-latest
+    # this is for the GITHUB_TOKEN's permissions so the action always has
+    # access to the checks and pull request claim
+    # this is not needed in this example because we don't use status checks here
+    permissions:
+      checks: write
+      pull-requests: read
+      
     outputs:
       paths: ${{ steps.list-files.outputs.paths }}
 
@@ -44,7 +52,7 @@ jobs:
     # Building and creating package for CWC. Using Git actions for this build as build.sh is not yet created for CDH
     - name: npm run lint
       working-directory: CDH
-      run:  npm run lint > typescript.log
+      run:  npm run lint --output-file eslint_report.json --format json
 
       continue-on-error: true
     
@@ -52,5 +60,5 @@ jobs:
       uses: DerLev/eslint-annotations@v2
       with:
         eslint-report: eslint_report.json
-        typescript-log: typescript.log
+        # typescript-log: typescript.log
 

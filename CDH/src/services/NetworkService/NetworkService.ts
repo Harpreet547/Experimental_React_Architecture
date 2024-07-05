@@ -2,7 +2,7 @@ import DateTimeFormatter from "../DateService/DateTimeFormatter";
 import { IRequestData } from "./NetworkServiceTypes";
 import axios from 'axios';
 
-const URL = "";
+const URL = "http://localhost:3000";
 
 const reviver = (key: string, value: unknown) => {
 

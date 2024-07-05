@@ -14,6 +14,7 @@ import { ThemeExample } from "./Theme/ThemeExample";
 import ThemeExplorer from "./Theme/ThemeExplorer";
 import Text from './Controls/Text/Text';
 import TextArea from "./Controls/TextArea/TextArea";
+import Switch from "./Controls/Switch/Switch";
 
 export {
     ControlLabel,
@@ -34,4 +35,5 @@ export {
     ContentContainer,
     Text,
     TextArea,
+    Switch
 };

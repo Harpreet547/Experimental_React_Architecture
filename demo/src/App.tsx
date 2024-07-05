@@ -1,11 +1,11 @@
 import React from 'react';
-import ListDemo from './components/ListDemo';
+import Demo from './components/Demo';
 
 const App: React.FC = (): React.ReactElement => {
 
   return (
     <>
-      <ListDemo />
+      <Demo />
     </>
   );
 };

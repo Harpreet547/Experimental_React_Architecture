@@ -1,11 +1,24 @@
-git checkout main
+param($baseBranch, $currentBranch, [int]$reduceWarningsBy)
+
+git checkout $baseBranch
 
 [int]$warningCountBase = npm run --silent lint:summary
 
-Write-Host $warningCountBase
+Write-Host Base branch warning count - $warningCountBase
 
-git checkout Harpreet547-reduce-warnings-action
+git checkout $currentBranch
 
-[int]$warningCountChild = npm run --silent lint:summary
+[int]$warningCountCurrent = npm run --silent lint:summary
 
-Write-Host $warningCountChild
+Write-Host Current branch warning count - $warningCountCurrent
+
+$warningCountDiff = $warningCountBase - $warningCountCurrent
+
+if ($warningCountDiff -lt $reduceWarningsBy) {
+    Write-Host "Current branch warnings: " + $warningCountCurrent + "\nBase branch warnings: " + $warningCountBase + "\nReduced warnings by: " + $warningCountDiff + "\nExpected reduction in warnings: " + $reduceWarningsBy
+    exit 1
+}
+else {
+    Write-Host "Current branch warnings: " + $warningCountCurrent + "\nBase branch warnings: " + $warningCountBase + "\nReduced warnings by: " + $warningCountDiff
+    exit 0
+}

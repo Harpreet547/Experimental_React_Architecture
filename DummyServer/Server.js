@@ -9,7 +9,9 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 
-app.get('/list', (req, res) => {
+app.get('/list', async (req, res) => {
+    await new Promise(resolve => setTimeout(resolve, 5000));
+
     res.send([{
         id: 1,
         value: 'One'
@@ -22,7 +24,8 @@ app.get('/list', (req, res) => {
     }])
 })
 
-app.get('/object', (req, res) => {
+app.get('/object', async (req, res) => {
+    await new Promise(resolve => setTimeout(resolve, 5000));
     res.send({
         id: 1,
         value: 'Value',

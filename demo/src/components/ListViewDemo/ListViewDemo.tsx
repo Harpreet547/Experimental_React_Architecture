@@ -10,14 +10,15 @@ interface IListResponse extends Record<string, unknown> {
 const LISTVIEW_COLLECTIONID = "listview-demo";
 const ListViewDemo: React.FC = (): React.ReactElement => {
     useCollection(LISTVIEW_COLLECTIONID, {
-        method: 'list',
-        type: 'GET',
+        method: 'list', // API method to fetch data
+        type: 'GET', // Request type
     }, true, true)
 
     const onRenderListItem = useCallback((row: ICollectionRow<IListResponse>, index: number) => {
         return (
             <TextBox
-                databind={{ collectionID: LISTVIEW_COLLECTIONID, fieldName: 'value', index }}
+                label={"Value: " + (row.id)}
+                databind={{ collectionID: LISTVIEW_COLLECTIONID, fieldName: 'value', index }} // Databind for each row in DataSource, Collection id should be same as the collection id passed to ListControl.
             />
         );
     }, []);

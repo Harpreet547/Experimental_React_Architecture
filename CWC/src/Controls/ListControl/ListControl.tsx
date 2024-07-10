@@ -6,6 +6,8 @@ import ControlLabel from "../ControlLabel/ControlLabel";
 import { tokens } from '../../Theme/Theme';
 import { useSelector } from "react-redux";
 import Spinner from "../Spinner/Spinner";
+import MessageBar from "../MessageBar/MessageBar";
+import { MessageBarType } from "../MessageBar/Types";
 
 interface IListControlProps extends ControlTypes.ILocalizedLabel {
     datasource?: IRowDataSource;
@@ -27,6 +29,10 @@ const ListControl: React.FC<IListControlProps> = (props: IListControlProps): Rea
         return datasource ? CollectionService.get(datasource.collectionID, state)?.loadState === 'Loading' : null;
     });
 
+    const listDataSourceError = useSelector((state: RootState) => {
+        return datasource ? CollectionService.get(datasource.collectionID, state)?.error?.message : null;
+    });
+
     const datasourceRows = useDataSource('RowDataSource', datasource) as ICollectionRow[] | undefined | null;
 
     const finalRows = datasourceRows ?? rows;
@@ -44,22 +50,28 @@ const ListControl: React.FC<IListControlProps> = (props: IListControlProps): Rea
                         label={`Loading...`}
                     />
                 ) : (
-                    <ul
-                        className={styles.ul}
-                    >
-                        {
-                            finalRows?.map((row, index) => (
-                                <li
-                                    key={keyExtractor(row)}
-                                    className={styles.li}
-                                >
-                                    {
-                                        onRenderListItem(row, index)
-                                    }
-                                </li>
-                            ))
-                        }
-                    </ul>
+                    listDataSourceError ? (
+                        <MessageBar
+                            message={listDataSourceError}
+                            type={MessageBarType.error}
+                        />
+                    ) :
+                        <ul
+                            className={styles.ul}
+                        >
+                            {
+                                finalRows?.map((row, index) => (
+                                    <li
+                                        key={keyExtractor(row)}
+                                        className={styles.li}
+                                    >
+                                        {
+                                            onRenderListItem(row, index)
+                                        }
+                                    </li>
+                                ))
+                            }
+                        </ul>
                 )
             }
         </div>

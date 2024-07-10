@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { MessageBarType } from "./Types";
 import { Warning24Regular, Info24Regular, ErrorCircle24Regular } from "@fluentui/react-icons";
 import { Text, makeStyles, mergeClasses, shorthands } from "@fluentui/react-components";
-import { tokens } from "../../../src/Theme/Theme";
+import { tokens } from "../../Theme/Theme";
 
 interface IMessageBarProps {
     type: MessageBarType;

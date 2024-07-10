@@ -1,15 +1,15 @@
 {
   "extends": "../tsconfig.library.json",
   "compilerOptions": {
-    // "rootDir": "src",
+    "rootDir": "src",
     "outDir": "./dist",
-    // "baseUrl": "src"
+    "baseUrl": "src"
   },
   "include": [
     "src",
-    "stories"
   ],
   "exclude": [
     "node_modules",
+    "stories"
   ]
 }

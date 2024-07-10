@@ -1,0 +1,14 @@
+{
+  "extends": "../tsconfig.library.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "./dist",
+    "baseUrl": "src"
+  },
+  "include": [
+    "stories",
+  ],
+  "exclude": [
+    "node_modules",
+  ]
+}

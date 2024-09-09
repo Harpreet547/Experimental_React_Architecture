@@ -1,21 +1,19 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { shallowEqual, useSelector, useStore } from "react-redux";
 import { AnyAction } from "redux";
-import { useCollection, RootState, CollectionService, useDatabind } from "@harpreet547/cdh";
-import { Button, RadioGroup, Switch } from "@harpreet547/cwc";
+import { Spinner } from "@fluentui/react-components";
+import { useCollection, RootState, CollectionService } from "@harpreet547/cdh";
+import { Button } from "@harpreet547/cwc";
 import Table from "./Table/Table";
 import { IColumnDefinition } from "./Table/Column";
-import { getEntities, getProficiencies, getProficiencyIDForShortcut, getProficiencyTitle, getStudents, getTagsForEntity, ITag } from "./Data";
+import { getEntities, getProficiencyIDForShortcut, getStudents, getTagsForEntity, ITag } from "./Data";
+import { Growthbook_listID, Tags_listID } from "./constants";
+import ProficiencyDropdown from "./Components/ProficiencyDropdown";
 
 interface IGrowthBookTagValue {
     value: number | null;
     isSelected: boolean;
 }
-
-const Growthbook_listID = "growthbook";
-const Tags_listID = "tags";
-const Proficiency_ListID = "proficiencies";
-
 const Growthbook: React.FC = (): React.ReactElement => {
 
     const [isBulkMode, setIsBulkMode] = useState(false);
@@ -23,6 +21,10 @@ const Growthbook: React.FC = (): React.ReactElement => {
     const store = useStore<RootState, AnyAction>();
 
     const getRows = useCallback(async () => {
+        /**
+         * Rows are built by combining students and tags
+         * Here we are getting students, entities and tags from dummy functions but this can be multiple API calls replacing usage of saga
+         */
         const students = await getStudents();
         const entities = await getEntities();
         const tags = (await Promise.all(entities.map(async (entity) => getTagsForEntity(entity.id as number)))).flat();
@@ -65,13 +67,6 @@ const Growthbook: React.FC = (): React.ReactElement => {
         true
     );
 
-    useCollection(
-        Proficiency_ListID,
-        getProficiencies,
-        true,
-        true
-    );
-
     const rows = useSelector((state: RootState) => {
         return CollectionService.get(Growthbook_listID, state)?.rows;
     }, shallowEqual);
@@ -79,6 +74,13 @@ const Growthbook: React.FC = (): React.ReactElement => {
     const tags = useSelector((state: RootState) => {
         return CollectionService.get(Tags_listID, state)?.rows as ITag[] | undefined;
     }, shallowEqual);
+
+    const isLoading = useSelector((state: RootState) => {
+        const isRowsLoading = CollectionService.get(Growthbook_listID, state)?.loadState === 'Loading';
+        const isTagsLoading = CollectionService.get(Tags_listID, state)?.loadState === 'Loading';
+
+        return isRowsLoading || isTagsLoading;
+    });
 
     const columnDefinitions = useMemo(() => {
         return getColumnDefinitions(tags, isBulkMode)
@@ -92,6 +94,13 @@ const Growthbook: React.FC = (): React.ReactElement => {
         const newRows = rows?.map((row) => {
             const newRow: Record<string, unknown> = { ...row };
 
+            /**
+             * Update the value of the tag with the selected proficiency
+             * and set isSelected to false
+             * 
+             * For this example we are updating redux but we can get the selected tags and call API if needed
+             * 
+             */
             tags?.forEach((tag) => {
                 newRow[tag.tagID as string] = {
                     value: (newRow[tag.tagID] as IGrowthBookTagValue).isSelected ? proficiencyID : (newRow[tag.tagID] as IGrowthBookTagValue).value,
@@ -107,6 +116,9 @@ const Growthbook: React.FC = (): React.ReactElement => {
 
     useEffect(() => {
 
+        /**
+         * If bulk mode is off then remove the event listener and use radio group's onKeyDown event
+         */
         if (isBulkMode) {
             document.addEventListener('keydown', handleKeyDown);
         } else {
@@ -121,62 +133,28 @@ const Growthbook: React.FC = (): React.ReactElement => {
     return (
         <>
             <h1>Growthbook</h1>
-            <Button
-                label={`Bulk Mode: ${isBulkMode ? 'On' : 'Off'}`}
-                onClick={() => setIsBulkMode((old) => !old)}
-                appearance="primary"
-            />
-            <Table
-                columnDefinitions={columnDefinitions}
-                rows={rows ?? []}
-                getRowID={(item) => item.id as number}
-            />
+            {
+                isLoading ? (
+                    <Spinner label='Loading' />
+                ) : (
+                    <>
+                        <Button
+                            label={`Bulk Mode: ${isBulkMode ? 'On' : 'Off'}`}
+                            onClick={() => setIsBulkMode((old) => !old)}
+                            appearance="primary"
+                        />
+                        <Table
+                            columnDefinitions={columnDefinitions}
+                            rows={rows ?? []}
+                            getRowID={(item) => item.id as number}
+                        />
+                    </>
+                )
+            }
         </>
     );
 };
 export default Growthbook;
-
-interface IProficiencyDropdownProps {
-    item: Record<string, unknown>;
-    tag: ITag;
-    isBulkMode?: boolean;
-}
-const ProficiencyDropdown: React.FC<IProficiencyDropdownProps> = (props: IProficiencyDropdownProps): React.ReactElement => {
-    const { item, tag, isBulkMode } = props;
-
-    const databind = { collectionID: Growthbook_listID, fieldName: `${tag.tagID}.value`, index: item.index as number };
-    const { updateBoundValue, boundValue } = useDatabind(databind);
-
-    return isBulkMode === true ? (
-        <div
-            style={{
-                display: 'flex',
-                flexDirection: 'row',
-            }}
-        >
-            <Switch
-                databind={{ collectionID: Growthbook_listID, fieldName: `${tag.tagID}.isSelected`, index: item.index as number }}
-            />
-            {
-                getProficiencyTitle(boundValue as number)
-            }
-        </div>
-    ) : (
-        <RadioGroup
-            aria-label="Proficiency"
-            dataSource={{ collectionID: Proficiency_ListID, keyField: 'proficiencyID', valueField: 'title' }}
-            databind={databind}
-            id={`${tag.tagID}_${item.index}`}
-            key={`${tag.tagID}_${item.index}`}
-            onKeyDown={(e) => {
-                const id = getProficiencyIDForShortcut(e.key);
-                if (id) {
-                    updateBoundValue(id);
-                }
-            }}
-        />
-    );
-};
 
 const getColumnDefinitions = (tags: ITag[] | undefined, isBulkMode: boolean): IColumnDefinition[] => {
     const tagColumns: IColumnDefinition[] = tags?.map((tag) => ({
@@ -188,7 +166,6 @@ const getColumnDefinitions = (tags: ITag[] | undefined, isBulkMode: boolean): IC
                 <ProficiencyDropdown
                     item={item as Record<string, unknown>}
                     tag={tag}
-                    key={tag.tagID + (item as Record<string, unknown>).index}
                     isBulkMode={isBulkMode}
                 />
             );

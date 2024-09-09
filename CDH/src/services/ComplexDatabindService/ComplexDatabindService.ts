@@ -8,7 +8,7 @@ const getComplexFieldValue = (fields: (string | number)[], row: unknown): unknow
 
     const [first, ...restFields] = fields;
 
-    if(restFields.length > 0)
+    if (restFields.length > 0)
         return getComplexFieldValue(restFields, (row as (Record<string, unknown>))?.[first]);
     return (row as (Record<string, unknown>))?.[first];
 };
@@ -17,8 +17,8 @@ const updateComplexFieldValue = (fields: (string | number)[], newValue: unknown,
 
     const [first, ...restFields] = fields;
 
-    if(restFields.length > 0) {
-        updateComplexFieldValue(restFields, newValue,(row as (Record<string, unknown>))?.[first]);
+    if (restFields.length > 0) {
+        updateComplexFieldValue(restFields, newValue, (row as (Record<string, unknown>))?.[first]);
     } else {
         (row as Record<string, unknown>)[first] = newValue;
     }
@@ -29,11 +29,11 @@ const updateRowBoundValue = <T>(databind: IRowDatabind, newValue: T, store: Stor
 
     const row = rows?.[databind.index];
 
-    if(!row) return;
+    if (!row) return;
 
     const fieldQuery = databind.fieldName;
     const fields = fieldQuery.split('.').map(field => {
-        if(isNaN(parseInt(field))) return field;
+        if (isNaN(parseInt(field))) return field;
         else return parseInt(field);
     });
 
@@ -45,7 +45,8 @@ const updateRowBoundValue = <T>(databind: IRowDatabind, newValue: T, store: Stor
     updateComplexFieldValue(fields, newValue, rowCopy);
 
     CollectionService.setRowAt(
-        databind.collectionID, {
+        databind.collectionID,
+        {
             ...rowCopy
         },
         databind.index,
@@ -58,11 +59,11 @@ const transformRowDatabind = <T>(databind: IRowDatabind, state: RootState) => {
 
     const row = rows?.[databind.index];
 
-    if(!row) return;
+    if (!row) return;
 
     const fieldQuery = databind.fieldName;
     const fields = fieldQuery.split('.').map(field => {
-        if(isNaN(parseInt(field))) return field;
+        if (isNaN(parseInt(field))) return field;
         else return parseInt(field);
     });
 

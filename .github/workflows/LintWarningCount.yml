@@ -64,6 +64,7 @@ jobs:
         script: return "$(npm run lint:summary)"
         result-encoding: string
     - name: Get result
+      uses: actions/github-script@v7
       # run: echo "${{steps.set-result.outputs.result}}"
       with:
         working-directory: CDH

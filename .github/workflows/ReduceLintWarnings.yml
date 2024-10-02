@@ -11,6 +11,9 @@ defaults:
     shell: bash
     # working-directory: CDH
 
+env:
+  BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
+
 jobs:
   
   build:
@@ -52,6 +55,6 @@ jobs:
       working-directory: CDH
       run: |
         echo baseBranch: ${{ github.event.pull_request.base.ref }}
-        echo currentBranch: ${{ github.ref_name }}
-        ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch ${{ github.ref_name }} -reduceWarningsBy 1
+        echo currentBranch: $BRANCH_NAME
+        ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch $BRANCH_NAME -reduceWarningsBy 1
 

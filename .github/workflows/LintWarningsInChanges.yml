@@ -6,8 +6,8 @@ name: Lint warnings in new changes
 on:
   push:
     branches: [ "main" ]
-  # pull_request:
-    # branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 defaults:
   run:

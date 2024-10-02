@@ -56,8 +56,8 @@ jobs:
     - name: git actions to print
       # uses: actions/github-script@v7
       id: set-result
-      with:
-        run: echo "trying to print report ${{steps.issues.outputs.report}}"
+      # with:
+      run: echo "trying to print report ${{steps.issues.outputs.report}}"
         # script: return "Issues - ${{steps.issues.outputs.report}}"
         # result-encoding: string
     - name: Get result

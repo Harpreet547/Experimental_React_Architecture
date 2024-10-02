@@ -64,6 +64,7 @@ jobs:
         script: return "$(npm run lint:summary)"
         result-encoding: string
     - name: Get result
+      working-directory: CDH
       run: echo "${{steps.set-result.outputs.result}}"
       
       # github.rest.issues.createComment({

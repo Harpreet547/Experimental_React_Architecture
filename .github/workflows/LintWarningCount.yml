@@ -50,9 +50,9 @@ jobs:
       id: issues
       working-directory: CDH
       run: |
-        report=$(npm run lint:summary)
-        echo "report=$report" >> $GITHUB_OUTPUT
-        echo "Warning count = $report"
+        warnings=$(npm run lint:summary)
+        echo "report=$warnings" >> "$GITHUB_OUTPUT"
+        echo "Warning count = $warnings"
 
     - name: git actions to print
       # uses: actions/github-script@v7

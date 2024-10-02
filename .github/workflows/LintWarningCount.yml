@@ -52,8 +52,7 @@ jobs:
       run: |
         warnings=$(npm run lint:summary)
         echo "Warning count = $warnings"
-        # warnings=$(echo $warnings | tr '\n' ' ')
-        echo "report=$warnings" >> "$GITHUB_STEP_SUMMARY"
+        echo "report=$warnings" >> "$GITHUB_OUTPUT"
         echo "Warning count 2 = $warnings"
         
     - name: git actions to print
@@ -61,7 +60,9 @@ jobs:
       id: set-result
       with:
         # run: echo "trying to print report ${{steps.issues.outputs.report}}"
-        script: return "Issues - ${{steps.issues.outputs.report}}"
+        script: |
+          warnings=$(npm run lint:summary)
+          return "$warnings"
         result-encoding: string
     - name: Get result
       run: echo "${{steps.set-result.outputs.result}}"

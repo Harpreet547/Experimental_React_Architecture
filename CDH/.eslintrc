@@ -9,8 +9,7 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:react-hooks/recommended",
-    "plugin:diff/ci"
+    "plugin:react-hooks/recommended"
     // "plugin:jest/recommended",
     // "plugin:testing-library/react"
   ],

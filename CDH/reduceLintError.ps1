@@ -1,10 +1,9 @@
 param($baseBranch, $currentBranch, [int]$reduceWarningsBy)
 
-Set-StrictMode -Version Latest
-$ErrorActionPreference = "Stop"
-$PSDefaultParameterValues['*:ErrorAction'] = 'Stop'
 
 try {
+
+    git fetch
 
     git checkout $baseBranch
 

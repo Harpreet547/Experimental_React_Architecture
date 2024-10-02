@@ -33,10 +33,6 @@ import { RecursivePartial } from './types/GlobalTypes';
 import ComplexDatabindService from './services/ComplexDatabindService/ComplexDatabindService';
 import { isDeepEqual } from './utils/isDeepEqual';
 
-// TODO: Testing lint errors difference
-// TODO: 
-// TODO: 
-
 export {
     store,
     AppDispatch,

@@ -52,8 +52,12 @@ jobs:
       run: |
         warnings=$(npm run lint:summary)
         echo "Warning count = $warnings"
+        EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+        echo "text<<$EOF" >> $GITHUB_OUTPUT
+        echo "$warnings" >> $GITHUB_OUTPUT
+        echo "$EOF" >> $GITHUB_OUTPUT
         # warnings=$(echo $warnings | tr '\n' ' ')
-        # echo "report=$warnings" >> "$GITHUB_OUTPUT"
+        echo "report=$warnings" >> "$GITHUB_OUTPUT"
         echo "Warning count 2 = $warnings"
         
     - name: git actions to print

@@ -52,7 +52,7 @@ jobs:
       run: |
         warnings=$(npm run lint:summary)
         echo "Warning count = $warnings"
-        warnings=$(echo $warnings | tr '\n' ' ')
+        # warnings=$(echo $warnings | tr '\n' ' ')
         # echo "report=$warnings" >> "$GITHUB_OUTPUT"
         echo "Warning count 2 = $warnings"
         

@@ -26,11 +26,11 @@ try {
     }
 
     if ($warningCountDiff -lt $reduceWarningsBy) {
-        Write-Host "Current branch warnings: " $warningCountCurrent "Base branch warnings: " $warningCountBase "Reduced warnings by: " $warningCountDiff "Expected reduction in warnings: " $reduceWarningsBy
+        Write-Host "Current branch warnings: " $warningCountCurrent "`r`nBase branch warnings: " $warningCountBase "`r`nReduced warnings by: " $warningCountDiff "`r`nExpected reduction in warnings: " $reduceWarningsBy
         exit 1
     }
     else {
-        Write-Host "Current branch warnings: " $warningCountCurrent "Base branch warnings: " $warningCountBase "Reduced warnings by: " $warningCountDiff
+        Write-Host "Current branch warnings: " $warningCountCurrent "`r`nBase branch warnings: " $warningCountBase "`r`nReduced warnings by: " $warningCountDiff
         exit 0
     }
 }

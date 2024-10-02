@@ -64,8 +64,16 @@ jobs:
         script: return "$(npm run lint:summary)"
         result-encoding: string
     - name: Get result
-      working-directory: CDH
-      run: echo "${{steps.set-result.outputs.result}}"
+      # run: echo "${{steps.set-result.outputs.result}}"
+      with:
+        working-directory: CDH
+        script: |
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: "${{steps.set-result.outputs.result}}"
+          })
       
       # github.rest.issues.createComment({
       #   issue_number: context.issue.number,

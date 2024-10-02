@@ -62,7 +62,7 @@ jobs:
         # result-encoding: string
     - name: Get result
       run: echo "${{steps.set-result.outputs.result}}"
-          
+      
       # github.rest.issues.createComment({
       #   issue_number: context.issue.number,
       #   owner: context.repo.owner,

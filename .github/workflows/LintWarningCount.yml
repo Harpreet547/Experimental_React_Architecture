@@ -51,7 +51,7 @@ jobs:
       uses: actions/github-script@v7
       with:
         working-directory: CDH
-        run: |
+        script: |
           finalVal=$(npm run lint:summary)
           echo "Warning count = $finalVal"
           github.rest.issues.createComment({

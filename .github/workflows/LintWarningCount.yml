@@ -53,7 +53,8 @@ jobs:
         report=$(npm run lint:summary)
         echo "Warning count = $report"
 
-    - uses: actions/github-script@v7
+    - name: git actions to print
+      # uses: actions/github-script@v7
       id: set-result
       with:
         run: echo "trying to print report ${{steps.issues.outputs.report}}"

@@ -48,13 +48,10 @@ jobs:
 
     - id: warnings
       name: node run eslint
-      uses: actions/github-script@v7
-      with:
-        github-token: ${{secrets.GITHUB_TOKEN}}
-        working-directory: CDH
-        script: |
-          finalVal=$(npm run lint:summary)
-          echo "Warning count = $finalVal"
+      working-directory: CDH
+      run: |
+        finalVal=$(npm run lint:summary)
+        echo "Warning count = $finalVal"
 
     - uses: actions/github-script@v7
       id: set-result

@@ -56,7 +56,7 @@ jobs:
     - uses: actions/github-script@v7
       id: set-result
       with:
-        script: | 
+        run: | 
           return ($(npm run lint:summary))
         result-encoding: string
     - name: Get result

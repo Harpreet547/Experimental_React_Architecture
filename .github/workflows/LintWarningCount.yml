@@ -60,6 +60,7 @@ jobs:
       uses: actions/github-script@v7
       id: set-result
       with:
+        working-directory: CDH
         script: return "$(npm run lint:summary)"
         result-encoding: string
     - name: Get result

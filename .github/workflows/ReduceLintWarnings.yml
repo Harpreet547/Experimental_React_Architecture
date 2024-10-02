@@ -48,6 +48,7 @@ jobs:
 
     - name: Check if number of specified warnings are removed
       id: check-warnings
+      shell: pwsh
       working-directory: CDH
       run: |
         ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch ${{ github.ref_name }} -reduceWarningsBy 1

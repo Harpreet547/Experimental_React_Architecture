@@ -51,6 +51,7 @@ jobs:
       working-directory: CDH
       run: |
         report=$(npm run lint:summary)
+        echo "report=$report" >> $GITHUB_OUTPUT
         echo "Warning count = $report"
 
     - name: git actions to print

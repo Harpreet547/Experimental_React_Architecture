@@ -9,13 +9,19 @@ module.exports = function (results, context) {
         { errors: 0, warnings: 0 }
     );
 
+    // console.log(typeof summary.warnings);
+    var newIssues = summary.warnings + summary.errors;
+    if (newIssues > 0) {
+        throw new Error("New issues found: " + newIssues);
+    } else {
+        console.log("No new issues found!");
+    }
     if (summary.errors > 0 || summary.warnings > 0) {
         return (
-            "Errors: " +
+            "Errors:" +
             summary.errors +
-            ", Warnings: " +
-            summary.warnings +
-            "\n"
+            ",Warnings:" +
+            summary.warnings
         );
     }
 

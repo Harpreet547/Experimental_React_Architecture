@@ -51,5 +51,7 @@ jobs:
       shell: pwsh
       working-directory: CDH
       run: |
+        echo baseBranch: ${{ github.event.pull_request.base.ref }}
+        echo currentBranch: ${{ github.ref_name }}
         ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch ${{ github.ref_name }} -reduceWarningsBy 1
 

@@ -26,20 +26,20 @@ try {
     }
 
     if ($warningCountDiff -lt $reduceWarningsBy) {
-        Write-Error "Current branch warnings: " + $warningCountCurrent + "Base branch warnings: " + $warningCountBase + "Reduced warnings by: " + $warningCountDiff + "Expected reduction in warnings: " + $reduceWarningsBy
+        Write-Host "Current branch warnings: " $warningCountCurrent "Base branch warnings: " $warningCountBase "Reduced warnings by: " $warningCountDiff "Expected reduction in warnings: " $reduceWarningsBy
         exit 1
     }
     else {
-        Write-Host "Current branch warnings: " + $warningCountCurrent + "Base branch warnings: " + $warningCountBase + "Reduced warnings by: " + $warningCountDiff
+        Write-Host "Current branch warnings: " $warningCountCurrent "Base branch warnings: " $warningCountBase "Reduced warnings by: " $warningCountDiff
         exit 0
     }
 }
 catch [System.InvalidCastException] {
-    Write-Error "Caught an InvalidCastException: Cannot convert data type."
+    Write-Host "Caught an InvalidCastException: Cannot convert data type."
     exit 1
 }
 catch [System.ArgumentException] {
-    Write-Error "Caught an ArgumentException: Invalid argument."
+    Write-Host "Caught an ArgumentException: Invalid argument."
     exit 1
 }
 catch {

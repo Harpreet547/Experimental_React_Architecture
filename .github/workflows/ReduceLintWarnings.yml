@@ -50,5 +50,5 @@ jobs:
       id: check-warnings
       working-directory: CDH
       run: |
-        ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch ${{ github.ref_name }}
+        ./reduceLintError.ps1 -baseBranch ${{ github.event.pull_request.base.ref }} -currentBranch ${{ github.ref_name }} -reduceWarningsBy 1
 

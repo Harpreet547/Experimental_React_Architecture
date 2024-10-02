@@ -13,9 +13,9 @@ module.exports = function (results, context) {
     // return summary.warnings;
     if (summary.errors > 0 || summary.warnings > 0) {
         return (
-            "Errors: " +
+            "Errors:" +
             summary.errors +
-            ", Warnings: " +
+            ",Warnings:" +
             summary.warnings
         );
     }

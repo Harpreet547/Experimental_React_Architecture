@@ -16,8 +16,7 @@ module.exports = function (results, context) {
             "Errors: " +
             summary.errors +
             ", Warnings: " +
-            summary.warnings +
-            "\n"
+            summary.warnings
         );
     }
 

@@ -3,8 +3,6 @@ param($baseBranch, $currentBranch, [int]$reduceWarningsBy)
 
 try {
 
-    git fetch
-
     git checkout $baseBranch
 
     [int]$warningCountBase = npm run --silent lint:summary

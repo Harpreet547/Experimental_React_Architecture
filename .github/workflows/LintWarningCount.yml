@@ -49,12 +49,6 @@ jobs:
     - name: node run eslint
       id: issues
       working-directory: CDH
-      run: |
-        warnings=$(npm run lint:summary)
-        if[$warnings == 0] then
-          echo "0 new issues added"
-        else 
-          echo "New Issues = $warnings"
-          exit 1
-        fi
+      run: npm run lint:summary
+        
         

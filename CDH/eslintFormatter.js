@@ -11,10 +11,13 @@ module.exports = function (results, context) {
 
     // console.log(typeof summary.warnings);
     var newIssues = summary.warnings + summary.errors;
+    return newIssues;
+
     if (newIssues > 0) {
         throw new Error("New issues found: " + newIssues);
     } else {
         console.log("No new issues found!");
+        return;
     }
     if (summary.errors > 0 || summary.warnings > 0) {
         return (

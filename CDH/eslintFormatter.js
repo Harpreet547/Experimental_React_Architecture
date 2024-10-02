@@ -10,7 +10,7 @@ module.exports = function (results, context) {
     );
 
     // console.log(typeof summary.warnings);
-    return summary.warnings + sumamary.erros;
+    return summary.warnings + summary.errors;
     if (summary.errors > 0 || summary.warnings > 0) {
         return (
             "Errors:" +

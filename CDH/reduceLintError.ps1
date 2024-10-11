@@ -4,11 +4,11 @@ param($baseBranch, $currentBranch, [int]$reduceWarningsBy)
 try {
 
     # git fetch origin
-    git switch origin $baseBranch
+    git checkout origin/$baseBranch
 
     [int]$warningCountBase = npm run --silent lint:summary
 
-    git switch origin $currentBranch
+    git checkout origin/$currentBranch
 
     [int]$warningCountCurrent = npm run --silent lint:summary
 

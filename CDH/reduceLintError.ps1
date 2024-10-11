@@ -9,7 +9,7 @@ try {
 
     [int]$warningCountBase = npm run --silent lint:summary
 
-    git pull origin $currentBranch
+    # git pull origin $currentBranch
     git switch $currentBranch
 
     [int]$warningCountCurrent = npm run --silent lint:summary
